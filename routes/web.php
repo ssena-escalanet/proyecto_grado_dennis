@@ -15,7 +15,7 @@ Route::get('/', function () {
 // Dashboard page
 Route::get('/dashboard', function () {
     return view('pages.dashboard.ecommerce', ['title' => 'E-commerce Dashboard']);
-})->name('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 // calender pages
 Route::get('/calendar', function () {

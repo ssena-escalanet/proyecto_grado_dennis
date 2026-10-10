@@ -22,18 +22,14 @@ class DatabaseSeeder extends Seeder
             DistribuidorSeeder::class,
         ]);
         User::updateOrCreate(
-            ['email' => 'admin@example.com'],
+            ['username' => 'admin'],
             [
-                'name' => 'Admin User',
-                'password' => Hash::make('admin123'),
-            ]
-        );
-
-        User::updateOrCreate(
-            ['email' => 'test@example.com'],
-            [
-                'name' => 'Test User',
-                'password' => Hash::make('password'),
+                'id_rol' => 1, // Admin
+                'password_hash' => Hash::make('password'),
+                'nombres' => 'Administrador',
+                'apellidos' => 'del Sistema',
+                'email' => 'admin@princesa.com',
+                'estado' => 'Activo'
             ]
         );
     }
