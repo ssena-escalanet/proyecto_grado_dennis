@@ -119,3 +119,11 @@ Route::get('/pedidos/{pedido}/detalles/create', [App\Http\Controllers\PedidoDeta
 Route::post('/pedidos/{pedido}/detalles', [App\Http\Controllers\PedidoDetalleController::class, 'store'])->name('pedidos.detalles.store')->middleware('auth');
 Route::delete('/pedidos/{pedido}/detalles/{detalle}', [App\Http\Controllers\PedidoDetalleController::class, 'destroy'])->name('pedidos.detalles.destroy')->middleware('auth');
 Route::post('/pedidos/{pedido}/confirmar', [App\Http\Controllers\PedidoController::class, 'confirmar'])->name('pedidos.confirmar')->middleware('auth');
+
+Route::get('/hoja-despacho/{despacho}/detalles', [App\Http\Controllers\DespachoDetalleController::class, 'index'])->name('despachos.detalles.index')->middleware('auth');
+Route::get('/hoja-despacho/{despacho}/detalles/create', [App\Http\Controllers\DespachoDetalleController::class, 'create'])->name('despachos.detalles.create')->middleware('auth');
+Route::post('/hoja-despacho/{despacho}/detalles', [App\Http\Controllers\DespachoDetalleController::class, 'store'])->name('despachos.detalles.store')->middleware('auth');
+Route::get('/hoja-despacho/{despacho}/detalles/{detalle}/edit', [App\Http\Controllers\DespachoDetalleController::class, 'edit'])->name('despachos.detalles.edit')->middleware('auth');
+Route::put('/hoja-despacho/{despacho}/detalles/{detalle}', [App\Http\Controllers\DespachoDetalleController::class, 'update'])->name('despachos.detalles.update')->middleware('auth');
+Route::delete('/hoja-despacho/{despacho}/detalles/{detalle}', [App\Http\Controllers\DespachoDetalleController::class, 'destroy'])->name('despachos.detalles.destroy')->middleware('auth');
+Route::post('/hoja-despacho/{despacho}/completar', [App\Http\Controllers\HojaDespachoController::class, 'completar'])->name('despachos.completar')->middleware('auth');

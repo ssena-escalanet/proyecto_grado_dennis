@@ -89,6 +89,9 @@
                 Editar Despacho
             </a>
             @endif
+            <a href="{{ route('despachos.detalles.index', $despacho) }}" class="inline-flex rounded-lg bg-brand-500 px-5 py-3 text-theme-sm font-medium text-white hover:bg-brand-600 transition-colors">
+                Gestionar Ruta de Despacho
+            </a>
         </div>
 
     </div>

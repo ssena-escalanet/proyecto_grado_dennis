@@ -95,4 +95,23 @@ class HojaDespachoController extends Controller
         return redirect()->route('hoja-despacho.index')
             ->with('success', 'Hoja de Despacho eliminada correctamente.');
     }
+
+    public function completar(HojaDespacho $despacho)
+    {
+        $pendientes = $despacho->detalles()->where('estado_entrega', 'Pendiente')->count();
+        if ($pendientes > 0) {
+            return back()->with('error', 'No puede completar un despacho con paradas pendientes de liquidar.');
+        }
+
+        $despacho->update([
+            'estado_despacho' => 'Completado',
+            'hora_llegada' => now()->format('H:i:s')
+        ]);
+
+        if ($despacho->vehiculo) {
+            $despacho->vehiculo->update(['estado' => 'Disponible']);
+        }
+
+        return back()->with('success', 'Hoja de Despacho completada. Vehículo liberado.');
+    }
 }

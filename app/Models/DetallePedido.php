@@ -26,4 +26,9 @@ class DetallePedido extends Model
     {
         return $this->belongsTo(Producto::class, 'id_producto', 'id_producto');
     }
+
+    public function detallesDespacho()
+    {
+        return $this->hasMany(DetalleDespacho::class, 'id_detalle_pedido', 'id_detalle_pedido');
+    }
 }
