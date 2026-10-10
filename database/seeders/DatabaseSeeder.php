@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             RolSeeder::class,
+            CategoriaProductoSeeder::class,
         ]);
         User::updateOrCreate(
             ['email' => 'admin@example.com'],

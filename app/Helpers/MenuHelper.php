@@ -13,6 +13,11 @@ class MenuHelper
                 'path' => '/roles',
             ],
             [
+                'icon' => 'tables',
+                'name' => 'Categorías',
+                'path' => '/categorias',
+            ],
+            [
                 'icon' => 'dashboard',
                 'name' => 'Dashboard',
                 'subItems' => [

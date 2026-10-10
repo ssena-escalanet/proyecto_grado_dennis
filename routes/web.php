@@ -110,3 +110,6 @@ require __DIR__.'/auth.php';
 
 use App\Http\Controllers\RolController;
 Route::resource('roles', RolController::class)->parameters(['roles' => 'role']);
+
+use App\Http\Controllers\CategoriaProductoController;
+Route::resource('categorias', CategoriaProductoController::class)->parameters(['categorias' => 'categoria']);
