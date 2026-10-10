@@ -8,6 +8,11 @@ class MenuHelper
     {
         return [
             [
+                'icon' => 'tables',
+                'name' => 'Productos',
+                'path' => '/productos',
+            ],
+            [
                 'icon' => 'user-profile',
                 'name' => 'Usuarios',
                 'path' => '/usuarios',
