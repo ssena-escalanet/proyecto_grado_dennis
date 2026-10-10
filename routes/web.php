@@ -9,7 +9,7 @@ use App\Http\Controllers\DashboardController;
 
 // Redirect root to login
 Route::get('/', function () {
-    return redirect()->route('signin');
+    return redirect()->route('login');
 });
 
 // Dashboard page
@@ -58,16 +58,6 @@ Route::get('/bar-chart', function () {
 })->name('bar-chart');
 
 
-use App\Http\Controllers\AuthController;
-
-// authentication pages
-Route::get('/signin', [AuthController::class, 'showLoginForm'])->name('signin');
-Route::post('/signin', [AuthController::class, 'login'])->name('signin.post');
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-
-Route::get('/signup', function () {
-    return view('pages.auth.signup', ['title' => 'Sign Up']);
-})->name('signup');
 
 // ui elements pages
 Route::get('/alerts', function () {
@@ -115,3 +105,5 @@ Route::get('/videos', function () {
 
 
 
+
+require __DIR__.'/auth.php';

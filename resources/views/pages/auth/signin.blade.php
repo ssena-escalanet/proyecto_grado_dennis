@@ -64,7 +64,7 @@
                                     <span class="bg-white p-2 text-gray-400 sm:px-5 sm:py-2 dark:bg-gray-900">Or</span>
                                 </div>
                             </div> --}}
-                            <form method="POST" action="{{ route('signin.post') }}">
+                            <form method="POST" action="{{ route('login') }}">
                                 @csrf
                                 @if ($errors->any())
                                     <div class="mb-4 rounded-lg bg-red-50 p-4 text-sm text-red-800 dark:bg-gray-800 dark:text-red-400" role="alert">
@@ -139,12 +139,12 @@
                                     </div>
                                 </div>
                             </form>
-                           {{--  <div class="mt-5">
+                            <div class="mt-5">
                                 <p class="text-center text-sm font-normal text-gray-700 sm:text-start dark:text-gray-400">
                                     Don't have an account?
-                                    <a href="/signup" class="text-brand-500 hover:text-brand-600 dark:text-brand-400">Sign Up</a>
+                                    <a href="{{ route('register') }}" class="text-brand-500 hover:text-brand-600 dark:text-brand-400">Sign Up</a>
                                 </p>
-                            </div> --}}
+                            </div>
                         </div>
                     </div>
                 </div>
