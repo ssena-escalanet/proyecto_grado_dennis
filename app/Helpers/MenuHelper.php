@@ -9,6 +9,11 @@ class MenuHelper
         return [
             [
                 'icon' => 'user-profile',
+                'name' => 'Usuarios',
+                'path' => '/usuarios',
+            ],
+            [
+                'icon' => 'user-profile',
                 'name' => 'Roles',
                 'path' => '/roles',
             ],

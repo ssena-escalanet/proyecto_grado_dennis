@@ -2,10 +2,16 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LocaleController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\RolController;
+use App\Http\Controllers\CategoriaProductoController;
+use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\VehiculoController;
+use App\Http\Controllers\DistribuidorController;
+use App\Http\Controllers\UsuarioController;
 
 // Locale Switch Route
 Route::get('/locale/{locale}', [LocaleController::class, 'switch'])->name('locale.switch');
-use App\Http\Controllers\DashboardController;
 
 // Redirect root to login
 Route::get('/', function () {
@@ -15,7 +21,7 @@ Route::get('/', function () {
 // Dashboard page
 Route::get('/dashboard', function () {
     return view('pages.dashboard.ecommerce', ['title' => 'E-commerce Dashboard']);
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
 // calender pages
 Route::get('/calendar', function () {
@@ -84,41 +90,11 @@ Route::get('/videos', function () {
     return view('pages.ui-elements.videos', ['title' => 'Videos']);
 })->name('videos');
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 require __DIR__.'/auth.php';
 
-use App\Http\Controllers\RolController;
 Route::resource('roles', RolController::class)->parameters(['roles' => 'role']);
-
-use App\Http\Controllers\CategoriaProductoController;
 Route::resource('categorias', CategoriaProductoController::class)->parameters(['categorias' => 'categoria']);
-
-use App\Http\Controllers\ClienteController;
 Route::resource('clientes', ClienteController::class)->parameters(['clientes' => 'cliente']);
-
-use App\Http\Controllers\VehiculoController;
 Route::resource('vehiculos', VehiculoController::class)->parameters(['vehiculos' => 'vehiculo']);
-
-use App\Http\Controllers\DistribuidorController;
 Route::resource('distribuidores', DistribuidorController::class)->parameters(['distribuidores' => 'distribuidor']);
+Route::resource('usuarios', UsuarioController::class)->parameters(['usuarios' => 'usuario'])->middleware(['auth']);
