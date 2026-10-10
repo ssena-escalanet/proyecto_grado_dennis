@@ -11,6 +11,7 @@ use App\Http\Controllers\DistribuidorController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\PedidoController;
+use App\Http\Controllers\HojaDespachoController;
 
 // Locale Switch Route
 Route::get('/locale/{locale}', [LocaleController::class, 'switch'])->name('locale.switch');
@@ -104,3 +105,5 @@ Route::resource('usuarios', UsuarioController::class)->parameters(['usuarios' =>
 Route::resource('productos', ProductoController::class)->parameters(['productos' => 'producto'])->middleware(['auth']);
 
 Route::resource('pedidos', PedidoController::class)->parameters(['pedidos' => 'pedido'])->middleware(['auth']);
+
+Route::resource('hoja-despacho', HojaDespachoController::class)->parameters(['hoja-despacho' => 'despacho'])->middleware(['auth']);
