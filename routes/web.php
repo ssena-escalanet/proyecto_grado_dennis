@@ -10,6 +10,7 @@ use App\Http\Controllers\VehiculoController;
 use App\Http\Controllers\DistribuidorController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\PedidoController;
 
 // Locale Switch Route
 Route::get('/locale/{locale}', [LocaleController::class, 'switch'])->name('locale.switch');
@@ -101,3 +102,5 @@ Route::resource('distribuidores', DistribuidorController::class)->parameters(['d
 Route::resource('usuarios', UsuarioController::class)->parameters(['usuarios' => 'usuario'])->middleware(['auth']);
 
 Route::resource('productos', ProductoController::class)->parameters(['productos' => 'producto'])->middleware(['auth']);
+
+Route::resource('pedidos', PedidoController::class)->parameters(['pedidos' => 'pedido'])->middleware(['auth']);

@@ -8,6 +8,11 @@ class MenuHelper
     {
         return [
             [
+                'icon' => 'forms',
+                'name' => 'Pedidos',
+                'path' => '/pedidos',
+            ],
+            [
                 'icon' => 'tables',
                 'name' => 'Productos',
                 'path' => '/productos',
