@@ -119,3 +119,6 @@ Route::resource('clientes', ClienteController::class)->parameters(['clientes' =>
 
 use App\Http\Controllers\VehiculoController;
 Route::resource('vehiculos', VehiculoController::class)->parameters(['vehiculos' => 'vehiculo']);
+
+use App\Http\Controllers\DistribuidorController;
+Route::resource('distribuidores', DistribuidorController::class)->parameters(['distribuidores' => 'distribuidor']);
