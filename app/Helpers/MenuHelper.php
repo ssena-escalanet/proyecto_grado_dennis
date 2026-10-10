@@ -8,6 +8,11 @@ class MenuHelper
     {
         return [
             [
+                'icon' => 'pages',
+                'name' => 'Bitácora',
+                'path' => '/bitacora',
+            ],
+            [
                 'icon' => 'calendar',
                 'name' => 'Hoja de Despacho',
                 'path' => '/hoja-despacho',

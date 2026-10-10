@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             ProductoSeeder::class,
             PedidoSeeder::class,
             HojaDespachoSeeder::class,
+            BitacoraAccionSeeder::class,
         ]);
         User::updateOrCreate(
             ['username' => 'admin'],

@@ -12,6 +12,7 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\HojaDespachoController;
+use App\Http\Controllers\BitacoraController;
 
 // Locale Switch Route
 Route::get('/locale/{locale}', [LocaleController::class, 'switch'])->name('locale.switch');
@@ -107,3 +108,6 @@ Route::resource('productos', ProductoController::class)->parameters(['productos'
 Route::resource('pedidos', PedidoController::class)->parameters(['pedidos' => 'pedido'])->middleware(['auth']);
 
 Route::resource('hoja-despacho', HojaDespachoController::class)->parameters(['hoja-despacho' => 'despacho'])->middleware(['auth']);
+
+Route::get('/bitacora', [BitacoraController::class, 'index'])->name('bitacora.index')->middleware('auth');
+Route::get('/bitacora/{bitacora}', [BitacoraController::class, 'show'])->name('bitacora.show')->middleware('auth');
