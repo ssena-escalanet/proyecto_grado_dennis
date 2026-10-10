@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             RolSeeder::class,
             CategoriaProductoSeeder::class,
             ClienteSeeder::class,
+            VehiculoSeeder::class,
         ]);
         User::updateOrCreate(
             ['email' => 'admin@example.com'],

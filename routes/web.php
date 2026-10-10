@@ -116,3 +116,6 @@ Route::resource('categorias', CategoriaProductoController::class)->parameters(['
 
 use App\Http\Controllers\ClienteController;
 Route::resource('clientes', ClienteController::class)->parameters(['clientes' => 'cliente']);
+
+use App\Http\Controllers\VehiculoController;
+Route::resource('vehiculos', VehiculoController::class)->parameters(['vehiculos' => 'vehiculo']);

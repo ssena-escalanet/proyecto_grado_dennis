@@ -13,6 +13,11 @@ class MenuHelper
                 'path' => '/roles',
             ],
             [
+                'icon' => 'tables',
+                'name' => 'Vehículos',
+                'path' => '/vehiculos',
+            ],
+            [
                 'icon' => 'user-profile',
                 'name' => 'Clientes',
                 'path' => '/clientes',
