@@ -107,3 +107,6 @@ Route::get('/videos', function () {
 
 
 require __DIR__.'/auth.php';
+
+use App\Http\Controllers\RolController;
+Route::resource('roles', RolController::class)->parameters(['roles' => 'role']);

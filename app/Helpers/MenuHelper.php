@@ -8,6 +8,11 @@ class MenuHelper
     {
         return [
             [
+                'icon' => 'user-profile',
+                'name' => 'Roles',
+                'path' => '/roles',
+            ],
+            [
                 'icon' => 'dashboard',
                 'name' => 'Dashboard',
                 'subItems' => [
