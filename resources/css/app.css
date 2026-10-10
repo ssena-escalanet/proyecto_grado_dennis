@@ -1312,3 +1312,4 @@ pre code,
   text-align: left !important;
   unicode-bidi: isolate;
 }
+[x-cloak] { display: none !important; }

@@ -91,4 +91,22 @@ class PedidoController extends Controller
         return redirect()->route('pedidos.index')
             ->with('success', 'Pedido eliminado correctamente.');
     }
+
+    public function confirmar(Pedido $pedido)
+    {
+        if ($pedido->estado_pedido !== 'Pendiente') {
+            return back()->with('error', 'El pedido ya no está Pendiente.');
+        }
+
+        if ($pedido->detalles()->count() === 0) {
+            return back()->with('error', 'No puede confirmar un pedido sin productos.');
+        }
+
+        $pedido->update([
+            'estado_pedido' => 'En Despacho'
+        ]);
+
+        return redirect()->route('pedidos.show', $pedido)
+            ->with('success', 'Pedido confirmado. Ya no se puede modificar el carrito.');
+    }
 }

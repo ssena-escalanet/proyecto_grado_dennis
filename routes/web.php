@@ -14,6 +14,8 @@ use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\HojaDespachoController;
 use App\Http\Controllers\BitacoraController;
 
+use App\Http\Controllers\PedidoDetalleController;
+
 // Locale Switch Route
 Route::get('/locale/{locale}', [LocaleController::class, 'switch'])->name('locale.switch');
 
@@ -111,3 +113,9 @@ Route::resource('hoja-despacho', HojaDespachoController::class)->parameters(['ho
 
 Route::get('/bitacora', [BitacoraController::class, 'index'])->name('bitacora.index')->middleware('auth');
 Route::get('/bitacora/{bitacora}', [BitacoraController::class, 'show'])->name('bitacora.show')->middleware('auth');
+
+Route::get('/pedidos/{pedido}/detalles', [App\Http\Controllers\PedidoDetalleController::class, 'index'])->name('pedidos.detalles.index')->middleware('auth');
+Route::get('/pedidos/{pedido}/detalles/create', [App\Http\Controllers\PedidoDetalleController::class, 'create'])->name('pedidos.detalles.create')->middleware('auth');
+Route::post('/pedidos/{pedido}/detalles', [App\Http\Controllers\PedidoDetalleController::class, 'store'])->name('pedidos.detalles.store')->middleware('auth');
+Route::delete('/pedidos/{pedido}/detalles/{detalle}', [App\Http\Controllers\PedidoDetalleController::class, 'destroy'])->name('pedidos.detalles.destroy')->middleware('auth');
+Route::post('/pedidos/{pedido}/confirmar', [App\Http\Controllers\PedidoController::class, 'confirmar'])->name('pedidos.confirmar')->middleware('auth');

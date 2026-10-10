@@ -82,6 +82,15 @@
                 Editar Pedido
             </a>
             @endif
+            @if(in_array($pedido->estado_pedido, ['Pendiente', 'En Despacho']))
+            <a href="{{ route('pedidos.detalles.index', $pedido) }}" class="inline-flex rounded-lg bg-blue-500 px-5 py-3 text-theme-sm font-medium text-white hover:bg-blue-600 transition-colors">
+                @if($pedido->estado_pedido === 'Pendiente')
+                    {{ $pedido->detalles()->count() > 0 ? 'Ver Productos del Pedido' : 'Agregar Productos al Pedido' }}
+                @else
+                    Ver Productos del Pedido
+                @endif
+            </a>
+            @endif
         </div>
 
     </div>
