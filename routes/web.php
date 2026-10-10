@@ -113,3 +113,6 @@ Route::resource('roles', RolController::class)->parameters(['roles' => 'role']);
 
 use App\Http\Controllers\CategoriaProductoController;
 Route::resource('categorias', CategoriaProductoController::class)->parameters(['categorias' => 'categoria']);
+
+use App\Http\Controllers\ClienteController;
+Route::resource('clientes', ClienteController::class)->parameters(['clientes' => 'cliente']);
