@@ -11,6 +11,9 @@ import { Calendar } from 'fullcalendar';
 
 
 
+import 'winbox/dist/css/winbox.min.css';
+import 'winbox/dist/winbox.bundle.min.js';
+
 window.Alpine = Alpine;
 window.createPopper = createPopper;
 window.ApexCharts = ApexCharts;

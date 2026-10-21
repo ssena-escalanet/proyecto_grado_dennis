@@ -16,9 +16,9 @@
 
         <div class="mb-6 flex justify-between items-center">
             <h2 class="text-title-md2 font-semibold text-gray-800 dark:text-white/90">Categorías de Producto</h2>
-            <a href="{{ route('categorias.create') }}" class="inline-flex items-center justify-center rounded-lg bg-brand-500 px-6 py-3 text-center font-medium text-white hover:bg-brand-600 transition-colors">
+            <button @click="$dispatch('open-create-categoria-modal')" class="inline-flex items-center justify-center rounded-lg bg-brand-500 px-6 py-3 text-center font-medium text-white hover:bg-brand-600 transition-colors">
                 Nueva Categoría
-            </a>
+            </button>
         </div>
 
         <x-common.component-card title="Gestión de Categorías" desc="Administra las categorías de productos">
@@ -81,6 +81,40 @@
                 {{ $categorias->links() }}
             </div>
         </x-common.component-card>
+
+        <!-- Modal para Crear Categoría -->
+        <x-ui.modal @open-create-categoria-modal.window="open = true" :isOpen="false" class="max-w-[500px] p-6">
+            <h3 class="mb-4 text-xl font-semibold text-gray-800 cursor-move dark:text-white/90">
+                Registrar Nueva Categoría
+            </h3>
+
+            <form action="{{ route('categorias.store') }}" method="POST">
+                @csrf
+                <div class="mb-4">
+                    <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+                        Nombre de la Categoría
+                    </label>
+                    <input type="text" name="nombre_categoria" class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30" required />
+                </div>
+                
+                <div class="mb-4">
+                    <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+                        Descripción
+                    </label>
+                    <textarea name="descripcion" rows="3" class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 w-full appearance-none rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"></textarea>
+                </div>
+
+                <div class="mt-6 flex justify-end gap-3">
+                    <button @click="open = false" type="button" class="flex items-center justify-center rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03]">
+                        Cancelar
+                    </button>
+                    <button type="submit" class="flex items-center justify-center rounded-lg bg-brand-500 px-4 py-2.5 text-sm font-medium text-white hover:bg-brand-600">
+                        Guardar Categoría
+                    </button>
+                </div>
+            </form>
+        </x-ui.modal>
+
     </div>
 </div>
 @endsection

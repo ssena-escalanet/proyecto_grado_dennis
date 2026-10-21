@@ -19,14 +19,39 @@
     {{ $attributes->except('class') }}>
 
     <!-- Backdrop -->
-    <div @click="open = false" class="fixed inset-0 h-full w-full bg-gray-400/50 backdrop-blur-[32px]"
+    <div @click="open = false" class="fixed inset-0 h-full w-full bg-transparent"
         x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0"
         x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-200"
         x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
     </div>
 
     <!-- Modal Content -->
-    <div @click.stop class="relative w-full rounded-3xl bg-white dark:bg-gray-900 {{ $attributes->get('class') }}"
+    <div @click.stop 
+         x-data="{ 
+            dragging: false, 
+            posX: 0, posY: 0, 
+            startX: 0, startY: 0,
+            dragStart(e) {
+                // No arrastrar si hacen clic en un input, botón, etc.
+                if(['INPUT', 'TEXTAREA', 'BUTTON', 'A', 'SELECT', 'svg', 'path'].includes(e.target.tagName)) return;
+                this.dragging = true;
+                this.startX = e.clientX - this.posX;
+                this.startY = e.clientY - this.posY;
+            },
+            dragMove(e) {
+                if(!this.dragging) return;
+                this.posX = e.clientX - this.startX;
+                this.posY = e.clientY - this.startY;
+            },
+            dragEnd() {
+                this.dragging = false;
+            }
+         }"
+         @mousedown="dragStart"
+         @mousemove.window="dragMove"
+         @mouseup.window="dragEnd"
+         :style="`top: ${posY}px; left: ${posX}px;`"
+         class="relative w-full rounded-3xl border border-gray-200 shadow-theme-xl bg-white dark:border-gray-800 dark:bg-gray-900 {{ $attributes->get('class') }}"
         x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform scale-95"
         x-transition:enter-end="opacity-100 transform scale-100" x-transition:leave="transition ease-in duration-200"
         x-transition:leave-start="opacity-100 transform scale-100"
